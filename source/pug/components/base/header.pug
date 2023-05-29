@@ -1,36 +1,13 @@
-mixin header(headerMods, currentUrl)
-  -
-    const headerLinks = [
-      {
-        href: "index.html",
-        text: "Главная"
-      },
-      {
-        href: "#",
-        text: "Страница 2"
-      },
-      {
-        href: "#",
-        text: "Страница 3"
-      },
-    ]
-
-  header.header(class=headerMods)
-    .container
-      if(currentUrl === "index.html")
-        //- lighthouse снимает 10 баллов SEO за <a> без href
-        span.header__logo Логотип
-      else
-        a.header__logo(href="index.html", aria-label="Переход на главную") Логотип
-      nav.main-nav
-        button.main-nav__toggle.btn-reset(type="button", aria-label="Переключатель отображения меню", aria-pressed="false")
-          +icon("icon-burger", 20, 20)
-        .main-nav__wrapper
-          ul.main-nav__list
-            each link in headerLinks
-              - const activeState = currentUrl === link.href
-              li.main-nav__item
-                if(activeState)
-                  span.main-nav__link.is-active=link.text
-                else
-                  a.main-nav__link(href=link.href)=link.text
+mixin header()
+  header.header
+    .logo
+      img(src="img/content/logo.png", width="150", height="150")
+    .layers
+      .layer.layer--top-image
+        img(src="img/content/window2.png", width="1920", height="1080")
+      .layer.layer--video
+        video.header__video(autoplay muted loop id="header-video")
+          source(src="img/content/silver.mp4")
+      .layer.layer--image
+        img(src="img/content/background.png", width="1380", height="967")
+    //- .text sdsfdgdg
